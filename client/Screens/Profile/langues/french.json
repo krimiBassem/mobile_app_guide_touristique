@@ -1,0 +1,57 @@
+{
+  "translation": {
+    "param": "Paramétres",
+    "notif": "Notification",
+    "son": "Son",
+    "lang": "Langue",
+    "acc": "Compte",
+    "decon": "Déconnexion",
+
+    "photos": "  Photos",
+    "params": "  Paramétres",
+    "about": "  A propos de DOURBIA",
+    "feedback": "  Avis",
+    "share": "  Partager cette application",
+    "help": "  Aide",
+
+    "satisfaction ?": "      A quel point étes vous satisfait ?",
+    "likeMost": "Qu'est ce que vous aimez le plus ?",
+    "succesMessage": "Ton avis est envoyé avec succès ",
+    "sendPic": "Ajouter une photo ou une vidéo",
+    "photoSelection": "Photo selectionée",
+    "send": "Envoyer",
+
+    "findresponse": "Trouvez votre réponse maintenant",
+    "AskRes": "Posez votre question..",
+    "demo": "Regardez la vidéo Demo",
+
+    "picChange": "Changer la photo de profil",
+    "name": "Nom et prénom",
+    "firstN": "Prénom ",
+    "lastN": "Nom ",
+    "changePass": "Changer le mot de passe",
+    "passChangeSucess": "Le mot de passe a été changé avec succès",
+    "nameChangeSucess": "Le nom a été changé avec succès",
+    "newPass": "Nouveau mot de passe",
+    "repeatPass": "Retapez le nouveau mot de passe",
+    "localisation": "Gérer vos paramètres de localisation",
+    "loc": "Localisation",
+    "activer": "Activer",
+    "desactiver": "Désactiver",
+    "save": "Enregistrer",
+
+    "partenaire": "     Partnaires",
+    "photog": "     Photographes",
+    "team": "     Equipe",
+
+    "Circuit Cyclable": " Circuit Cyclable ",
+    "Circuit Pedestre": " Circuit Pedestre",
+    "Circuit Punique": " Circuit Punique",
+    "Circuit Romain": " Circuit Romain",
+    "Circuit Byzantin": "Circuit Byzantin ",
+    "Circuit Must See": "Circuit Must See",
+    "commencer": " Commençons L'experience",
+    "allons": " ALLONS-Y !",
+    "Tours": "Tours"
+  }
+}

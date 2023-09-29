@@ -1,0 +1,74 @@
+{
+    "translation":{
+
+
+        "param":"الإعدادات",
+        "notif":"إشعار",
+        "son":"صوت",
+        "lang":"لغة",
+        "acc":"الحساب",
+        "decon":"تسجيل خروج",
+        "profile":"الملف الشخصي",
+
+
+        "params":"  الإعدادات",
+        "about":"  حول DOURBIA",
+        "feedback":"  تنويه",
+        "share":"  شارك هذا التطبيق",
+        "help":"  مساعدة",
+
+
+
+        "satisfaction ?":"      ما مدى رضاك؟",
+        "likeMost":"ما الذي تفضله الأكثر؟",
+        "succesMessage":"تم إرسال رأيك بنجاح ",
+        "sendPic":"أضف صورة أو مقطع فيديو",
+        "photoSelection":"الصورة المختارة",
+        "send":"أرسل",
+
+
+
+        "findresponse":"ابحث عن إجابتك الآن",
+        "AskRes":"اسأل سؤالك..",
+        "demo":"شاهد الفيديو التوضيحي",
+
+
+
+
+        "picChange":"تغيير صورة الملف الشخصي",
+        "name":"الإسم واللقب",
+        "firstN":"الاسم ",
+        "lastN":"لقب ",
+        "changePass":"غير كلمة السر",
+        "passChangeSucess":"تم تغيير كلمة المرور بنجاح",
+        "nameChangeSucess":"تم تغيير الاسم بنجاح",
+        "newPass":"كلمة مرور جديدة ",
+        "repeatPass":"أعد كتابة كلمة السر الجديدة",
+        "localisation":"إدارة إعدادات الموقع الخاص بك",
+        "loc":"موقع",
+        "activer":"ممكن",
+        "desactiver":"إبطال",
+        "save":"سجل",
+      
+
+        "partenaire":"     شركاء",
+        "photog":"     المصورين",
+        "team":"      الفريق",
+      
+
+        "Circuit Cyclable":"حلبة ركوب الدراجات",
+        "Circuit Pedestre":"حلبة مشاة",
+        "Circuit Punique":"الدائرة البونية",
+        "Circuit Romain":"الدائرة الرومانية",
+        "Circuit Byzantin":"الدائرة البيزنطية",
+        "Circuit Must See":" يجب أن ترى الدائرة",
+        "commencer":"ابدأ التجربة",
+        "allons":"هيا بنا !",
+        "Tours":"الأبراج"
+
+
+
+
+
+    }
+}

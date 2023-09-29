@@ -1,0 +1,352 @@
+import {
+  Dimensions,
+  Image,
+  SafeAreaView,
+  StyleSheet,
+  Text,
+  View,
+  TouchableHighlight,
+  Button,
+  TouchableOpacity,
+  Linking,
+  TextInput,
+  ScrollView,
+  StatusBar,
+  Alert,
+  ImageBackground,
+  ToastAndroid,
+} from 'react-native';
+import React, {useState, useEffect, useCallback} from 'react';
+import axios from 'axios';
+
+/******************* IMPORT COMPONENTS *******************/
+import TextToSpeak from './TextToSpeak';
+import HeaderFicheMonument from './HeaderFicheMonument';
+import ContributionUser from './ContributionUser';
+import IconChevron from 'react-native-vector-icons/Feather';
+/******************* ***************** *******************/
+
+/******************* IMPORT PACKAGES *******************/
+import ImagePicker from 'react-native-image-crop-picker';
+import DocumentPicker from 'react-native-document-picker';
+/******************* *************** *******************/
+
+/******************* BASE URL *******************/
+import baseUrl from '../../assests/baseUrl';
+/******************* ******** *******************/
+
+const FicheMonument = (
+  {navigation, openFiche, firstNav, navigatePartage},
+  props,
+) => {
+  // const {nomMonument} = route.params;
+  // const {descriptionMonument} = route.params;
+
+  // console.log(openFiche.Thematiques[0].MonumentThematique.MonumentId);
+  // console.log(' order + Q', openFiche.orderMonument  , firstNav);
+  //console.log('first nav props from openFiche', firstNav);
+  //console.log('openFiche.orderMonument ', openFiche.orderMonument );
+  // console.log('openFnavigation fiche', props.navigationFiche);
+  // console.log('openFiche.MonumentId', openFiche.MonumentId);
+  /********** State hook for storing data from monuments table **********/
+  const [monumentId, setMonumentId] = useState('');
+  const [nomMonument, setNomMonument] = useState('');
+  // const [nextPin, setNextPin] = useState(false);
+  /**
+   * @todo: State for images monument
+   */
+  /********** ************************************************ **********/
+  const [images, setImages] = useState([]);
+  const fetchMonument = async () => {
+    try {
+      let imageTable = [];
+      await axios
+        .get(`${baseUrl}/monument/${openFiche.MonumentId}`)
+        .then(res => {
+          res.data.data.ImageMonuments.map(el =>
+            imageTable.push(el.uri_image_monument),
+          );
+        });
+      setImages(imageTable);
+      // images.map(el => {
+      //   imageTable.push(el.uri_image_monument);
+      // });
+      // console.log(imageTable);
+    } catch (e) {
+      console.log(e, 'Fetch monument');
+    }
+  };
+
+  useEffect(() => {
+    fetchMonument();
+  }, [openFiche.MonumentId]);
+
+  /********** Select video from gallery **********/
+  const chooseVideoFromLibrary = () => {
+    ImagePicker.openPicker({
+      mediaType: 'video',
+    })
+      .then(video => {
+        console.log(video);
+      })
+      .catch(err => console.error(err));
+  };
+  /********** ***************************** **********/
+
+  /********** Select video from camera **********/
+  const tackeVideoFromCamera = () => {
+    ImagePicker.openCamera({
+      mediaType: 'video',
+    })
+      .then(image => {
+        const uri = image.path;
+        const name = image.modificationDate;
+        const type = image.mime;
+        const source = {
+          uri,
+          name,
+          type,
+        };
+        handleUpload(source);
+      })
+      .catch(err => console.log(err));
+  };
+  /********** ************************ **********/
+
+  /********** Method for getting cloudinary url **********/
+  const handleUpload = photo => {
+    const data = new FormData();
+    data.append('file', photo);
+    data.append('upload_preset', 'dourbiaApp');
+    data.append('cloud_name', 'devmycode');
+    fetch('https://api.cloudinary.com/v1_1/devmycode/upload', {
+      method: 'POST',
+      body: data,
+    })
+      .then(res => res.json())
+      .then(data => {
+        setElementForContribution(data.secure_url);
+        setIsUploaded(true);
+        // setPhotoChoosed(data.secure_url);
+        // setPhotoTaked(data.secure_url);
+        // setFileToUpload(data.secure_url);
+      })
+      .catch(err => {
+        Alert.alert('An Error Occured While Uploading');
+      });
+  };
+  /********** ********************************* **********/
+
+  /********** Icon track audio **********/
+  const items = [];
+  for (let index = 0; index <= 3; index++) {
+    items.push(
+      <Image
+        key={index}
+        source={require('../../Components/Images/icones/track_audio.png')}
+        style={{width: 35, height: 30, marginLeft: 5}}
+      />,
+    );
+  }
+  /********** **************** **********/
+
+  /********** Fetching data from monuments table **********/
+  // const fetchMonument = async () => {
+  //   try {
+  //     const response = await axios.get(
+  //       `${baseUrl}/monument/${stateIdMonument}`,
+  //     );
+  //     setNomMonument(response.data.data.nom_monument);
+  //     setDescriptionMonument(response.data.data.description_monument);
+  //   } catch (e) {
+  //     console.log(e, 'problem api into searchbar');
+  //   }
+  // };
+
+  /********** *********** Formulaire de questionnaire*********************** **********/
+
+  const url =
+    'https://docs.google.com/forms/d/e/1FAIpQLSd3f9bdMCHe2qoSZBKGmuKDHtwumip35L1ssi5jDLFb4aR6UQ/viewform';
+
+  const handlePress = useCallback(async () => {
+    // Checking if the link is supported for links with custom URL scheme.
+
+    const supported = await Linking.canOpenURL(url);
+
+    if (supported) {
+      // Opening the link with some app, if the URL scheme is "http" the web link should be opened
+      // by some browser in the mobile
+      await Linking.openURL(url);
+    } else {
+      Alert.alert(`Don't know how to open this URL: ${url}`);
+    }
+  }, []);
+  /****************************************************/
+  return (
+    <ScrollView style={{flex: 1}}>
+      <View>
+        <HeaderFicheMonument images={images} />
+        <View style={{alignSelf: 'center', marginTop: 10}}>
+          {openFiche ? (
+            <Text
+              style={{
+                fontSize: 22,
+                fontWeight: 'bold',
+                color: 'black',
+                fontFamily: 'Segoe UI',
+              }}>
+              {openFiche.nom_monument}
+            </Text>
+          ) : (
+            <Text
+              style={{
+                fontSize: 22,
+                fontWeight: 'bold',
+                color: 'black',
+                fontFamily: 'Segoe UI',
+              }}>
+              Not found
+            </Text>
+          )}
+        </View>
+      </View>
+      <View>
+        <Text style={{marginLeft: 20, marginTop: 30, fontWeight: 'bold'}}>
+          Envie d'écoutez le text?
+        </Text>
+        <View
+          style={{
+            width: 250,
+            alignSelf: 'center',
+            marginTop: 15,
+            padding: 5,
+            paddingLeft: 15,
+            borderRadius: 8,
+            shadowColor: '#000',
+            shadowOffset: {
+              width: 0,
+              height: 1,
+            },
+            shadowOpacity: 0.2,
+            shadowRadius: 1.41,
+
+            elevation: 2,
+            flexDirection: 'row',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+          }}>
+          <TextToSpeak
+            description={
+              openFiche
+                ? openFiche.description_monument
+                : "Concernant ce monument, il n'y pas de description actuellement. Par contre vous pouvez partager votre contribution dans le contenu. Merci "
+            }
+          />
+          <View style={{flexDirection: 'row', marginRight: 30}}>{items}</View>
+        </View>
+        <View
+          style={{
+            width: Dimensions.get('window').width * 0.7,
+            alignSelf: 'center',
+            marginTop: 50,
+          }}>
+          {openFiche ? (
+            <Text style={{textAlign: 'justify'}}>
+              {openFiche.description_monument}
+            </Text>
+          ) : (
+            <Text style={{textAlign: 'justify'}}>Not found</Text>
+          )}
+        </View>
+      </View>
+      <ContributionUser />
+      <View>
+        {openFiche ? (
+          <Text style={{fontWeight: 'bold', marginTop: 30, marginLeft: 20}}>
+            Découvrez d'avantage {openFiche.nom_monument}
+          </Text>
+        ) : (
+          <Text style={{fontWeight: 'bold', marginTop: 30, marginLeft: 20}}>
+            Not found
+          </Text>
+        )}
+        <View
+          style={{
+            flexDirection: 'row',
+            justifyContent: 'center',
+            marginTop: 25,
+            marginBottom: 10,
+          }}>
+          <TouchableOpacity
+            onPress={() =>
+              ToastAndroid.show('en cours de construction', ToastAndroid.LONG)
+            }
+            underlayColor={'#fff'}>
+            <Image
+              source={require('../../Components/Images/icones/obj3d.png')}
+              style={{width: 40, height: 40}}
+            />
+          </TouchableOpacity>
+          <TouchableOpacity
+            onPress={() =>
+              ToastAndroid.show('en cours de construction', ToastAndroid.LONG)
+            }
+            underlayColor={'#fff'}>
+            <Image
+              source={require('../../Components/Images/icones/visite360.png')}
+              style={{width: 40, height: 40, marginLeft: 40, marginRight: 40}}
+            />
+          </TouchableOpacity>
+          <TouchableOpacity
+            onPress={() =>
+              ToastAndroid.show('en cours de construction', ToastAndroid.LONG)
+            }
+            underlayColor={'#fff'}>
+            <Image
+              source={require('../../Components/Images/icones/video.png')}
+              style={{width: 40, height: 45}}
+            />
+          </TouchableOpacity>
+        </View>
+      </View>
+      <View
+        style={{
+          width: 257,
+          alignSelf: 'center',
+          height: 79,
+          borderRadius: 8,
+          marginTop: 30,
+        }}>
+        <Button
+          title="Partager votre expérience"
+          color="#E59138"
+          onPress={() =>
+            ToastAndroid.show('En cours de construction', ToastAndroid.LONG)
+          }
+        />
+      </View>
+      {openFiche.orderMonument == 1 && firstNav == 6 && (
+        <TouchableOpacity
+          style={styles.buttonAutreCircuit}
+          onPress={() => handlePress()}>
+          <Text style={{color: '#E59138', fontWeight: 'bold'}}>
+            Questionnaire
+          </Text>
+          <IconChevron name="chevrons-right" size={30} color="#E59138" />
+        </TouchableOpacity>
+      )}
+    </ScrollView>
+  );
+};
+
+export default FicheMonument;
+
+const styles = StyleSheet.create({
+  buttonAutreCircuit: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    position: 'absolute',
+    right: 10,
+    bottom: 0,
+  },
+});

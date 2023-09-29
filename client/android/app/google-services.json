@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "962362814023",
+    "project_id": "dourbia-f0683",
+    "storage_bucket": "dourbia-f0683.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:962362814023:android:188128d964bdbc36458b62",
+        "android_client_info": {
+          "package_name": "com.didon.dourbia"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "962362814023-9l314sr5ltfabhkn1po7rq40ncv1mjko.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.didon.dourbia",
+            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
+          }
+        },
+        {
+          "client_id": "962362814023-id32rc5ac35fkbnhpcvdiboe9sdf75gt.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.didon.dourbia",
+            "certificate_hash": "9617e5e783a20cb52ff10e15e77ee1a80a7e621c"
+          }
+        },
+        {
+          "client_id": "962362814023-um07e7eakuqb576bl2nn05vt54q0dfar.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAH60Wad54gTihq1C5Ph6o2osJRyqoy2Cw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "962362814023-um07e7eakuqb576bl2nn05vt54q0dfar.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

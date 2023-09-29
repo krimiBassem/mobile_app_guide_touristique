@@ -1,0 +1,57 @@
+{
+  "translation": {
+    "param": "Settings",
+    "notif": "Notification",
+    "son": "Sound",
+    "lang": "Languages",
+    "acc": "Account",
+    "decon": "Logout",
+
+    "photos": "  photos",
+    "params": "  Settings",
+    "about": "  About DOURBIA",
+    "feedback": "  Feedback",
+    "share": "  Share this application",
+    "help": "  Help",
+
+    "satisfaction ?": "      How satisfied are you ?",
+    "likeMost": "What do you like the most ?",
+    "succesMessage": "FeedBack is sended successfully",
+    "sendPic": "Add a photo or video",
+    "photoSelection": "Photo selectioned",
+    "send": "Send",
+
+    "findresponse": "Find your answer now",
+    "AskRes": "Ask your question..",
+    "demo": "Watch the Demo video",
+
+    "picChange": "Change profile picture",
+    "name": "Full name",
+    "firstN": "First name ",
+    "lastN": "Last name ",
+    "changePass": "Change password",
+    "passChangeSucess": "Password is changed successfully",
+    "nameChangeSucessChangeSucess": "Name is changed successfully",
+    "newPass": "New Password",
+    "repeatPass": "Retype the new password",
+    "localisation": "Manage your location settings",
+    "loc": "Location",
+    "activer": "Enable",
+    "desactiver": "Disable",
+    "save": "Save",
+
+    "partenaire": "     partners",
+    "photog": "     photographers",
+    "team": "     team",
+
+    "Circuit Cyclable": " Circuit Cyclable ",
+    "Circuit Pedestre": " Circuit Pedestre",
+    "Circuit Punique": " Circuit Punique",
+    "Circuit Romain": " Circuit Romain",
+    "Circuit Byzantin": "Circuit Byzantin ",
+    "Circuit Must See": "Circuit Must See",
+    "commencer": " Commençons L'experience",
+    "allons": " ALLONS-Y !",
+    "Tours": "Tours"
+  }
+}

@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Dourbia</string>
+    <string name="facebook_app_id">357770696235266</string>
+    <string name="fb_login_protocol_scheme">fb357770696235266</string>
+    <!-- <string name="facebook_client_token">6d8ecd56e0e48072048cffeab1245578</string> -->
+    <string name="facebook_client_token">6d38d46452169198050343fc9d515c49</string>
+</resources>
